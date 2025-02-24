@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://bcky4w1tnxwo8"]
+
+[ext_resource type="Script" path="res://inventory/script/inv_ui.gd" id="1_gpkmh"]
+[ext_resource type="Texture2D" uid="uid://1irl41cflur1" path="res://ART/weapon/inventory-background.png" id="2_n6q5w"]
+[ext_resource type="PackedScene" uid="uid://bsxg2mmm07ci8" path="res://inventory/scene/inv_ui_slot.tscn" id="3_jjn7s"]
+
+[node name="Inv_UI" type="Control"]
+custom_minimum_size = Vector2(102, 21)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 102.0
+offset_bottom = 21.0
+script = ExtResource("1_gpkmh")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 102.0
+offset_bottom = 21.0
+texture = ExtResource("2_n6q5w")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="GridContainer" type="GridContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -8.5
+offset_right = 48.0
+offset_bottom = 9.5
+grow_horizontal = 2
+grow_vertical = 2
+columns = 5
+
+[node name="inv_UI_slot1" parent="NinePatchRect/GridContainer" instance=ExtResource("3_jjn7s")]
+layout_mode = 2
+
+[node name="inv_UI_slot2" parent="NinePatchRect/GridContainer" instance=ExtResource("3_jjn7s")]
+layout_mode = 2
+
+[node name="inv_UI_slot3" parent="NinePatchRect/GridContainer" instance=ExtResource("3_jjn7s")]
+layout_mode = 2
+
+[node name="inv_UI_slot4" parent="NinePatchRect/GridContainer" instance=ExtResource("3_jjn7s")]
+layout_mode = 2
+
+[node name="inv_UI_slot5" parent="NinePatchRect/GridContainer" instance=ExtResource("3_jjn7s")]
+layout_mode = 2

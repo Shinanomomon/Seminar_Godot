@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=4 uid="uid://dfq6ry6uo4jjx"]
+
+[ext_resource type="Script" path="res://script/MAP/River_get_objects.gd" id="1_6m3a4"]
+[ext_resource type="TileSet" uid="uid://2naxs7qb8xy2" path="res://scene/MAP/River_get_objects.tres" id="2_l4fe4"]
+[ext_resource type="PackedScene" uid="uid://3vbgdh3x0pe3" path="res://scene/player.tscn" id="3_5v2us"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fkd7i"]
+
+[node name="River_get_objects" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_6m3a4")
+
+[node name="TileMap" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Ground" type="TileMapLayer" parent="TileMap"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAAEAAEAAAAFAAUAAAAEAAAAAAAFAAMAAAAEAP//AAAFAAMAAAAEAP7/AAAFAAMAAAAEAP3/AAAFAAMAAAAEAPz/AAAFAAMAAAAEAPv/AAADAAAAAAADAAEAAAADAAUAAAADAAAAAAADAAMAAAADAP//AAABAAIAAAADAP7/AAABAAEAAAADAP3/AAAEAAIAAAADAPz/AAADAAMAAAADAPv/AAACAAAAAAACAAEAAAAEAAAAAAACAAAAAAACAAMAAAACAP//AAADAAQAAAACAP7/AAACAAEAAAACAP3/AAADAAIAAAACAPz/AAAEAAMAAAACAPv/AAABAAAAAAABAAEAAAAEAAEAAAABAAAAAAADAAMAAAABAP//AAADAAQAAAABAP7/AAACAAEAAAABAP3/AAAFAAIAAAABAPz/AAADAAIAAAABAPv/AAABAAAAAAAAAAEAAAAEAAUAAAAAAAAAAAABAAIAAAAAAP//AAACAAQAAAAAAP7/AAAFAAIAAAAAAP3/AAADAAQAAAAAAPz/AAAFAAIAAAAAAPv/AAACAAAAAAD//wEAAAACAAUAAAD//wAAAAACAAMAAAD/////AAABAAMAAAD///7/AAADAAQAAAD///3/AAACAAQAAAD///z/AAACAAIAAAD///v/AAABAAAAAAD+/wEAAAADAAUAAAD+/wAAAAACAAMAAAD+////AAABAAMAAAD+//7/AAABAAQAAAD+//3/AAACAAIAAAD+//z/AAADAAQAAAD+//v/AAABAAAAAAD9/wEAAAAAAAUAAAD9/wAAAAAAAAIAAAD9////AAAAAAQAAAD9//7/AAAAAAEAAAD9//3/AAAAAAEAAAD9//z/AAAAAAEAAAD9//v/AAAAAAAAAAA=")
+tile_set = ExtResource("2_l4fe4")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="TileMap"]
+tile_set = ExtResource("2_l4fe4")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(8, -8)
+shape = SubResource("RectangleShape2D_fkd7i")
+
+[node name="player" parent="." instance=ExtResource("3_5v2us")]
+collision_mask = 2
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

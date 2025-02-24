@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://dy665nkx1go6f"]
+
+[ext_resource type="Script" path="res://script/ITEM/bone_collectable.gd" id="1_avl7f"]
+[ext_resource type="Texture2D" uid="uid://b04nq0nprempk" path="res://ART/OBJ/Bone.PNG" id="1_dqquc"]
+[ext_resource type="Resource" uid="uid://b1eahhw1hn4jh" path="res://inventory/item/bone.tres" id="2_s55i2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f0huf"]
+radius = 2.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rufua"]
+radius = 21.095
+
+[node name="bone_collectable" type="StaticBody2D"]
+light_mask = 5
+visibility_layer = 5
+position = Vector2(0, 1)
+script = ExtResource("1_avl7f")
+item = ExtResource("2_s55i2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_f0huf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -4.76837e-07)
+scale = Vector2(0.793011, 0.668011)
+texture = ExtResource("1_dqquc")
+
+[node name="interactable_area" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="interactable_area"]
+shape = SubResource("CircleShape2D_rufua")
+
+[connection signal="body_entered" from="interactable_area" to="." method="_on_interactable_area_body_entered"]

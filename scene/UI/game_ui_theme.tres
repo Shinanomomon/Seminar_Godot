@@ -1,0 +1,62 @@
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://b6ptiyxd28eow"]
+
+[ext_resource type="Texture2D" uid="uid://u6hd40lc28mx" path="res://ART/UI/Sprite sheet for Basic Pack.png" id="1_kqbqj"]
+[ext_resource type="FontFile" uid="uid://3by843cnw58g" path="res://ART/fornts/pixelFont-7-8x14-sproutLands.ttf" id="2_jlpt1"]
+[ext_resource type="FontFile" uid="uid://t6r8cwe84fpy" path="res://ART/fornts/TH Sarabun New Regular.ttf" id="3_67qct"]
+[ext_resource type="FontFile" uid="uid://bll0hjjhv55un" path="res://ART/fornts/Trirong-Medium.ttf" id="4_vrml0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o4iwj"]
+atlas = ExtResource("1_kqbqj")
+region = Rect2(504, 131, 35, 18)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hy2dl"]
+texture = SubResource("AtlasTexture_o4iwj")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 3.0
+texture_margin_bottom = 2.0
+region_rect = Rect2(0, 0, 35, 18)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3h8il"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 0.365, 0.365, 1)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_detail = 1
+
+[resource]
+default_font = ExtResource("4_vrml0")
+default_font_size = 19
+DayAndNightCounterPanel/base_type = &"PanelContainer"
+DayAndNightCounterPanel/styles/panel = SubResource("StyleBoxTexture_hy2dl")
+DayAndNightLabel/base_type = &"Label"
+DayAndNightLabel/font_sizes/font_size = 18
+DayAndNightLabel/fonts/font = ExtResource("2_jlpt1")
+InformationUI/base_type = &"RichTextLabel"
+InformationUI/colors/default_color = Color(0, 0, 0, 1)
+InformationUI/colors/font_outline_color = Color(0, 0, 0, 1)
+InformationUI/colors/font_selected_color = Color(0, 0, 0, 1)
+InformationUI/colors/font_shadow_color = Color(0, 0, 0, 1)
+InformationUI/colors/selection_color = Color(0, 0, 0, 1)
+InformationUI/colors/table_border = Color(0, 0, 0, 1)
+InformationUI/colors/table_even_row_bg = Color(0, 0, 0, 1)
+InformationUI/colors/table_odd_row_bg = Color(0, 0, 0, 1)
+InformationUI/constants/line_separation = 0
+InformationUI/constants/outline_size = 0
+InformationUI/constants/shadow_offset_x = 0
+InformationUI/constants/shadow_offset_y = 0
+InformationUI/constants/shadow_outline_size = 0
+InformationUI/constants/table_h_separation = 0
+InformationUI/constants/table_v_separation = 0
+InformationUI/constants/text_highlight_h_padding = 0
+InformationUI/constants/text_highlight_v_padding = 0
+InformationUI/font_sizes/bold_font_size = 20
+InformationUI/fonts/bold_font = ExtResource("3_67qct")
+InformationUI/styles/focus = SubResource("StyleBoxFlat_3h8il")
+InformationUI/styles/normal = SubResource("StyleBoxFlat_3h8il")

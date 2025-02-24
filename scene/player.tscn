@@ -1,0 +1,265 @@
+[gd_scene load_steps=25 format=3 uid="uid://3vbgdh3x0pe3"]
+
+[ext_resource type="Script" path="res://script/player.gd" id="1_3te8f"]
+[ext_resource type="Resource" uid="uid://bo1ptfd2rspis" path="res://inventory/playerinv.tres" id="2_jb30y"]
+[ext_resource type="Texture2D" uid="uid://drfv3jjxt4hk5" path="res://ART/player/IMG_5919.PNG" id="2_siq23"]
+[ext_resource type="PackedScene" uid="uid://oyjk7jfipphu" path="res://scene/components/day_night_cycle_component.tscn" id="3_1g6rc"]
+[ext_resource type="PackedScene" uid="uid://bcky4w1tnxwo8" path="res://inventory/scene/inv_ui.tscn" id="4_5w0wy"]
+[ext_resource type="PackedScene" uid="uid://bumbuebsyo5rg" path="res://scene/UI/infomation.tscn" id="5_y5tbe"]
+[ext_resource type="PackedScene" uid="uid://dwlxrvb2vmr0t" path="res://scene/UI/day_and_night_panel.tscn" id="6_i1wm8"]
+[ext_resource type="PackedScene" uid="uid://df6qjd11sxl8n" path="res://scene/UI/change_map_ui.tscn" id="8_as2du"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_doxsn"]
+atlas = ExtResource("2_siq23")
+region = Rect2(0, 0, 56, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6t63g"]
+atlas = ExtResource("2_siq23")
+region = Rect2(672, 0, 56, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0vl3c"]
+atlas = ExtResource("2_siq23")
+region = Rect2(560, 0, 56, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0u7y"]
+atlas = ExtResource("2_siq23")
+region = Rect2(504, 0, 56, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3pct2"]
+atlas = ExtResource("2_siq23")
+region = Rect2(896, 0, 56, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j4dfk"]
+atlas = ExtResource("2_siq23")
+region = Rect2(840, 0, 56, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rkmax"]
+atlas = ExtResource("2_siq23")
+region = Rect2(784, 0, 56, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6eak2"]
+atlas = ExtResource("2_siq23")
+region = Rect2(280, 0, 56, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fxeu7"]
+atlas = ExtResource("2_siq23")
+region = Rect2(392, 0, 56, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tucve"]
+atlas = ExtResource("2_siq23")
+region = Rect2(448, 0, 56, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3no8"]
+atlas = ExtResource("2_siq23")
+region = Rect2(56, 0, 56, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_08svg"]
+atlas = ExtResource("2_siq23")
+region = Rect2(112, 0, 56, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ap7i4"]
+atlas = ExtResource("2_siq23")
+region = Rect2(168, 0, 56, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2aggo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_doxsn")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6t63g")
+}],
+"loop": true,
+"name": &"l-attack",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0vl3c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t0u7y")
+}],
+"loop": true,
+"name": &"l-mining",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3pct2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j4dfk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rkmax")
+}],
+"loop": true,
+"name": &"l-walk",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6eak2")
+}],
+"loop": true,
+"name": &"r-attack",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fxeu7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tucve")
+}],
+"loop": true,
+"name": &"r-mining",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3no8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_08svg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ap7i4")
+}],
+"loop": true,
+"name": &"r-walk",
+"speed": 4.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gdbi1"]
+radius = 4.0
+height = 12.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gsrau"]
+radius = 7.0
+height = 24.0
+
+[node name="player" type="CharacterBody2D"]
+light_mask = 3
+y_sort_enabled = true
+collision_layer = 4
+script = ExtResource("1_3te8f")
+inv = ExtResource("2_jb30y")
+
+[node name="DayNightCycleComponent" parent="." instance=ExtResource("3_1g6rc")]
+position = Vector2(129, -72)
+scale = Vector2(0.45, 0.45)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 9.53674e-07)
+scale = Vector2(0.535714, 0.535714)
+sprite_frames = SubResource("SpriteFrames_2aggo")
+animation = &"r-attack"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 12)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_gdbi1")
+
+[node name="player_hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_hitbox"]
+shape = SubResource("CapsuleShape2D_gsrau")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(3, 3)
+
+[node name="regin_timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="attack_cooldown" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="Mons_camera" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+limit_left = -816
+limit_top = -560
+limit_right = 800
+limit_bottom = 496
+limit_smoothed = true
+rotation_smoothing_enabled = true
+
+[node name="Lab_savePoint_camera" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+limit_left = -816
+limit_top = -560
+limit_right = 800
+limit_bottom = 496
+limit_smoothed = true
+rotation_smoothing_enabled = true
+
+[node name="Sand_fighting_camera" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+
+[node name="Cave_mine_camera" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+
+[node name="River_get_objects_camera" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+
+[node name="Inv_UI" parent="." instance=ExtResource("4_5w0wy")]
+light_mask = 4
+visibility_layer = 4
+offset_left = -49.0
+offset_top = -39.0
+offset_right = 53.0
+offset_bottom = 1.0
+
+[node name="healthbar" type="ProgressBar" parent="."]
+modulate = Color(0, 1, 0, 1)
+offset_left = -8.0
+offset_top = 14.0
+offset_right = 162.0
+offset_bottom = 41.0
+scale = Vector2(0.1, 0.1)
+show_percentage = false
+
+[node name="infomation" parent="." instance=ExtResource("5_y5tbe")]
+show_behind_parent = true
+light_mask = 6
+visibility_layer = 6
+offset_left = -193.0
+offset_top = -113.0
+offset_right = 269.0
+offset_bottom = 138.0
+scale = Vector2(0.741623, 0.819577)
+
+[node name="DayAndNightPanel" parent="." instance=ExtResource("6_i1wm8")]
+offset_left = 210.0
+offset_top = -117.0
+offset_right = 210.0
+offset_bottom = -117.0
+scale = Vector2(0.631732, 0.623533)
+
+[node name="Change_map_UI" parent="." instance=ExtResource("8_as2du")]
+show_behind_parent = true
+light_mask = 6
+visibility_layer = 6
+offset_left = -193.0
+offset_top = -115.0
+offset_right = 12.0
+offset_bottom = -4.00001
+scale = Vector2(1.67206, 1.86577)
+
+[connection signal="body_entered" from="player_hitbox" to="." method="_on_player_hitbox_body_entered"]
+[connection signal="body_exited" from="player_hitbox" to="." method="_on_player_hitbox_body_exited"]
+[connection signal="timeout" from="regin_timer" to="." method="_on_regin_timer_timeout"]
+[connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]
+[connection signal="close" from="infomation" to="." method="_on_infomation_close"]
+[connection signal="ChooseYes" from="Change_map_UI" to="." method="_on_change_map_ui_choose_yes"]
+[connection signal="Close" from="Change_map_UI" to="." method="_on_change_map_ui_close"]

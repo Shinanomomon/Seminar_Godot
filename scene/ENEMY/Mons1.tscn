@@ -1,0 +1,186 @@
+[gd_scene load_steps=19 format=3 uid="uid://c1t13286tta61"]
+
+[ext_resource type="Script" path="res://script/Enemy/mons_1.gd" id="1_e7l5t"]
+[ext_resource type="Texture2D" uid="uid://deb8ke2ltgbq7" path="res://ART/Ennemy/Mons1.PNG" id="1_l6awx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l50q7"]
+atlas = ExtResource("1_l6awx")
+region = Rect2(336, 0, 56, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_63k6u"]
+atlas = ExtResource("1_l6awx")
+region = Rect2(224, 0, 56, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06cfy"]
+atlas = ExtResource("1_l6awx")
+region = Rect2(224, 0, 56, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sptgv"]
+atlas = ExtResource("1_l6awx")
+region = Rect2(280, 0, 56, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_88hrh"]
+atlas = ExtResource("1_l6awx")
+region = Rect2(224, 0, 56, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fdjj8"]
+atlas = ExtResource("1_l6awx")
+region = Rect2(168, 0, 56, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f52xw"]
+atlas = ExtResource("1_l6awx")
+region = Rect2(56, 0, 56, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fpoax"]
+atlas = ExtResource("1_l6awx")
+region = Rect2(448, 0, 56, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6qu0o"]
+atlas = ExtResource("1_l6awx")
+region = Rect2(392, 0, 56, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_840qv"]
+atlas = ExtResource("1_l6awx")
+region = Rect2(0, 0, 56, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6e0q"]
+atlas = ExtResource("1_l6awx")
+region = Rect2(56, 0, 56, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c1mpw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l50q7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_63k6u")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06cfy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sptgv")
+}],
+"loop": true,
+"name": &"hit_L",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_88hrh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fdjj8")
+}],
+"loop": true,
+"name": &"hit_R",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f52xw")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fpoax")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6qu0o")
+}],
+"loop": true,
+"name": &"walk_L",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_840qv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t6e0q")
+}],
+"loop": true,
+"name": &"walk_R",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5noq3"]
+radius = 5.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j0mrq"]
+radius = 11.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i08mb"]
+radius = 70.0071
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6kvlj"]
+radius = 236.034
+
+[node name="Mon1" type="CharacterBody2D"]
+position = Vector2(-8, 8)
+collision_layer = 21
+collision_mask = 21
+script = ExtResource("1_e7l5t")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -24)
+sprite_frames = SubResource("SpriteFrames_c1mpw")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, -8)
+shape = SubResource("CircleShape2D_5noq3")
+
+[node name="hitbox" type="Area2D" parent="."]
+collision_layer = 21
+collision_mask = 21
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+light_mask = 13
+visibility_layer = 13
+position = Vector2(8, -8)
+shape = SubResource("CircleShape2D_j0mrq")
+
+[node name="detection_area" type="Area2D" parent="."]
+collision_layer = 21
+collision_mask = 21
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection_area"]
+light_mask = 13
+visibility_layer = 13
+position = Vector2(8, -8)
+shape = SubResource("CircleShape2D_i08mb")
+
+[node name="Mon1_collect_area" type="Area2D" parent="."]
+light_mask = 13
+visibility_layer = 13
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mon1_collect_area"]
+light_mask = 13
+visibility_layer = 13
+shape = SubResource("CircleShape2D_6kvlj")
+
+[node name="take_damage_cooldown" type="Timer" parent="."]
+
+[node name="healthbar" type="ProgressBar" parent="."]
+modulate = Color(1, 0.215106, 0.68778, 1)
+offset_left = 2.0
+offset_top = 3.0
+offset_right = 122.0
+offset_bottom = 20.0
+scale = Vector2(0.1, 0.1)
+show_percentage = false
+
+[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]

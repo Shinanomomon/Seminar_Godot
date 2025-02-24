@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://bece2l36h27a3"]
+
+[ext_resource type="Script" path="res://script/dialogue/dialogue.gd" id="1_sayc7"]
+[ext_resource type="Texture2D" uid="uid://b5ti5gsgt2a81" path="res://ART/weapon/inventory-slot.png" id="2_nu2oo"]
+
+[node name="Dialogue" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 138.0
+offset_bottom = 62.0
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_sayc7")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 552.0
+offset_bottom = 247.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_nu2oo")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="Name" type="RichTextLabel" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 4.0
+offset_right = 449.0
+offset_bottom = 34.0
+scale = Vector2(1.2, 1.2)
+text = "Name:"
+
+[node name="Text" type="RichTextLabel" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 48.0
+offset_right = 451.0
+offset_bottom = 208.0
+scale = Vector2(1.2, 1.2)
+text = "Chat"

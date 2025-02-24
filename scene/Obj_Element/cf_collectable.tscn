@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbrbqq51pey3f"]
+
+[ext_resource type="Texture2D" uid="uid://dctc2qqn6rbv2" path="res://ART/Obj_Element/Cf.PNG" id="1_38lex"]
+
+[node name="Cf_collectable" type="StaticBody2D"]
+scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_38lex")

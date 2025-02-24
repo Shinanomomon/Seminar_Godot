@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://diagv3jkwvw3y"]
+
+[ext_resource type="Texture2D" uid="uid://i8rxtrxw2fss" path="res://ART/Obj_Element/Np.PNG" id="1_ds1yx"]
+
+[node name="Np_collectable" type="StaticBody2D"]
+scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ds1yx")

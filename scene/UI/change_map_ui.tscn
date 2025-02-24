@@ -1,0 +1,80 @@
+[gd_scene load_steps=3 format=3 uid="uid://df6qjd11sxl8n"]
+
+[ext_resource type="Script" path="res://script/UI/change_map_ui.gd" id="1_bm433"]
+[ext_resource type="Texture2D" uid="uid://b5ti5gsgt2a81" path="res://ART/weapon/inventory-slot.png" id="1_yksaw"]
+
+[node name="Change_map_UI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_bm433")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 588.0
+offset_bottom = 319.0
+scale = Vector2(0.349274, 0.349274)
+texture = ExtResource("1_yksaw")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 48.0
+offset_right = 424.0
+offset_bottom = 88.0
+scale = Vector2(2, 2)
+text = "กรุณาเลือกแมพที่ต้องการจะไป "
+
+[node name="CloseBT" type="Button" parent="NinePatchRect"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 0
+offset_left = 554.0
+offset_top = 4.0
+offset_right = 586.0
+offset_bottom = 35.0
+text = "X"
+
+[node name="Mine" type="Button" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 238.0
+offset_top = 126.0
+offset_right = 323.0
+offset_bottom = 157.0
+text = "Mine Map"
+
+[node name="Monster_danger" type="Button" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 190.0
+offset_top = 270.0
+offset_right = 362.0
+offset_bottom = 301.0
+text = "Monster Danger Map"
+
+[node name="Sand-fighting" type="Button" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 222.0
+offset_top = 222.0
+offset_right = 333.0
+offset_bottom = 253.0
+text = "Sand Map
+"
+
+[node name="River-get objects" type="Button" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 238.0
+offset_top = 174.0
+offset_right = 324.0
+offset_bottom = 205.0
+text = "River Map"
+
+[connection signal="pressed" from="NinePatchRect/CloseBT" to="." method="_on_close_bt_pressed"]
+[connection signal="pressed" from="NinePatchRect/Mine" to="." method="_on_mine_pressed"]
+[connection signal="pressed" from="NinePatchRect/Monster_danger" to="." method="_on_monster_danger_pressed"]
+[connection signal="pressed" from="NinePatchRect/Sand-fighting" to="." method="_on_sandfighting_pressed"]
+[connection signal="pressed" from="NinePatchRect/River-get objects" to="." method="_on_riverget_objects_pressed"]
