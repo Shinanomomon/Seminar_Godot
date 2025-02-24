@@ -4,7 +4,7 @@ const Minuttes_Per_Day: int = 24 * 60
 const Minuttes_Per_Hour: int = 60
 const Game_Minute_Duration: float = TAU / Minuttes_Per_Day
 
-var Game_Speed: float = 300.0 
+var Game_Speed: float = 1.0 
 
 var Inittial_Day: int = 1
 var Inittial_Hour: int = 24

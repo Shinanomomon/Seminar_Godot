@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=4 uid="uid://cuc0vl2ot0tjk"]
+[gd_scene load_steps=9 format=4 uid="uid://cuc0vl2ot0tjk"]
 
 [ext_resource type="Script" path="res://script/MAP/Lab_savePoint.gd" id="1_bwgca"]
 [ext_resource type="TileSet" uid="uid://c2pol70fr0p1o" path="res://scene/MAP/Lab_savePoint.tres" id="2_6tci0"]
 [ext_resource type="PackedScene" uid="uid://3vbgdh3x0pe3" path="res://scene/player.tscn" id="4_eemfa"]
 [ext_resource type="PackedScene" uid="uid://1xnl850wcg0s" path="res://scene/npc.tscn" id="5_daqkn"]
+[ext_resource type="PackedScene" uid="uid://c1t13286tta61" path="res://scene/ENEMY/Mons1.tscn" id="6_3jkki"]
 [ext_resource type="PackedScene" uid="uid://ce48545shubph" path="res://scene/item/stick_collectable.tscn" id="6_l82bj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0wt11"]
@@ -64,6 +65,8 @@ position = Vector2(96, 0)
 
 [node name="player" parent="." instance=ExtResource("4_eemfa")]
 position = Vector2(96, 53)
+
+[node name="Mon1" parent="." instance=ExtResource("6_3jkki")]
 
 [connection signal="body_entered" from="Lab_savePoint_exitpoint" to="." method="_on_home_exitpoint_body_entered"]
 [connection signal="body_exited" from="Lab_savePoint_exitpoint" to="." method="_on_home_exitpoint_body_exited"]

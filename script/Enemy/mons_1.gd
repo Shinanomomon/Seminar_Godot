@@ -1,16 +1,22 @@
 extends CharacterBody2D
-#SLIME STATUS
-@export var speed = 20 
+@export_group("MON STATUS")#MON STATUS
+@export var speed = 50
 @export var health = 100
-@export var damageActtack:int = 10 
-#STTATUS
+@export var damageActtack:int = 30 
+@export var damageArea:int = 5 #-----------
+#Drop rate
+@export var Rate_drop = 10
+@export var Pm_drop = false
+@export_group("STATUS")#STATUS
 var dead = false
-#PLAYER
+@export_group("PLAYER")#PLAYER
 var player_in_area = false
 var player 
 var can_take_damage = true
-#ITEM
-@onready var slime = null#-----------------
+@export_group("ITEM")#ITEM
+@onready var bone = $bone_collectable
+@onready var Pm = $Pm_collectable
+@export var itemDefult: InvItem
 @export var itemRes: InvItem
 
 func _ready() -> void:
@@ -22,7 +28,9 @@ func _physics_process(delta: float) -> void:
 		$detection_area/CollisionShape2D.disabled = false
 		if player_in_area:
 			position += (player.position - position) / speed
-			$AnimatedSprite2D.play("move")
+			$AnimatedSprite2D.play("walk_L")
+		elif !can_take_damage:
+			$AnimatedSprite2D.play("hit_L")
 		else:
 			$AnimatedSprite2D.play("idle")
 	if dead:
@@ -48,7 +56,7 @@ func take_damage(damage):
 		health = health - damage
 		$take_damage_cooldown.start()
 		can_take_damage = false
-		print("slime health = ",health)
+		print("mon health = ",health)
 		if health <= 0 and  !dead :
 			death()
 
@@ -56,26 +64,33 @@ func death():
 	dead = true
 	$AnimatedSprite2D.play("death")
 	await get_tree().create_timer(1).timeout
-	drop_slime()
+	drop_rate()
+	drop()
 	
 	$AnimatedSprite2D.visible = false
 	$hitbox/CollisionShape2D.disabled = true
 	$detection_area/CollisionShape2D.disabled = true
 
-func drop_slime():
-	slime.visible = true
-	$slime_collect_area/CollisionShape2D.disabled = false
-	slime_collect()
+func drop_rate():
+	if(Rate_drop>= randi_range(0,100)):
+		Pm_drop = true
 
-func slime_collect():
-	await get_tree().create_timer(1.5).timeout
-	slime.visible = false
-	player.collect(itemRes)
+func drop():
+	bone.visible = true 
+	if(Pm_drop == true):
+		Pm.visible = true
+		$Pm_collectable/CollisionShape2D.disabled = false
+	$bone_collectable/CollisionShape2D.disabled = false
+	_collect()
+
+func _collect():
+	await get_tree().create_timer(3).timeout
+	bone.visible = false
+	Pm.visible = false
+	player.collect(itemDefult)
+	if(Pm_drop == true):
+		player.collect(itemRes)
 	queue_free()
-
-func _on_slime_collect_area_body_entered(body: Node2D) -> void:###------------------
-	if body.has_method("player"):
-		player = body
 
 func enemy():
 	pass
@@ -94,3 +109,7 @@ func update_health():
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if "get_damage" in body:
 		body.get_damage(damageActtack)
+
+func _on_mon_1_collect_area_body_entered(body: Node2D) -> void:
+	if body.has_method("player"):
+		player = body

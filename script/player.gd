@@ -11,7 +11,7 @@ var enemy_attack_cooldown = true
 var player_alive = true
 var Damage_enemy_acttack = 0
 #speed player
-@export var speed = 100
+@export var speed = 200
 #player_state 
 var player_state
 #load slots item
@@ -80,7 +80,6 @@ func  _physics_process(delta):
 func play_anim(dir):
 	#animetion player walk a s w d
 	if !spell_equiped:
-		speed = 100
 		if player_state == "idle" : 
 			$AnimatedSprite2D.play("idle")
 		if player_state == "walking" : 
@@ -196,7 +195,6 @@ func _on_infomation_close() -> void:
 
 func update_health():
 	var healthbar = $healthbar
-	
 	healthbar.value = health
 	
 	if health >= maxhealth:

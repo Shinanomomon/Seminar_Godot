@@ -59,20 +59,6 @@ light_mask = 13
 visibility_layer = 13
 position = Vector2(328, -144)
 
-[node name="Item" type="Node" parent="."]
-
-[node name="bone_collectable" parent="Item" instance=ExtResource("8_bf74b")]
-position = Vector2(-40, 216)
-
-[node name="bone_collectable2" parent="Item" instance=ExtResource("8_bf74b")]
-position = Vector2(-424, 216)
-
-[node name="bone_collectable3" parent="Item" instance=ExtResource("8_bf74b")]
-position = Vector2(-768, -304)
-
-[node name="bone_collectable4" parent="Item" instance=ExtResource("8_bf74b")]
-position = Vector2(416, 120)
-
 [node name="Lab_savePoint_trasition_point" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 4
@@ -80,6 +66,9 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Lab_savePoint_trasition_point"]
 position = Vector2(-104, -8)
 shape = SubResource("RectangleShape2D_wup76")
+
+[node name="bone_collectable" parent="." instance=ExtResource("8_bf74b")]
+position = Vector2(-72, 24)
 
 [connection signal="body_entered" from="Lab_savePoint_trasition_point" to="." method="_on_chiffside_trasition_point_body_entered"]
 [connection signal="body_exited" from="Lab_savePoint_trasition_point" to="." method="_on_chiffside_trasition_point_body_exited"]

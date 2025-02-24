@@ -1,7 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://c1t13286tta61"]
+[gd_scene load_steps=23 format=3 uid="uid://c1t13286tta61"]
 
 [ext_resource type="Script" path="res://script/Enemy/mons_1.gd" id="1_e7l5t"]
 [ext_resource type="Texture2D" uid="uid://deb8ke2ltgbq7" path="res://ART/Ennemy/Mons1.PNG" id="1_l6awx"]
+[ext_resource type="Resource" uid="uid://b1eahhw1hn4jh" path="res://inventory/item/bone.tres" id="2_css0d"]
+[ext_resource type="Resource" uid="uid://cmw0q75gtv5hn" path="res://inventory/Item_Obj_Element/Pm.tres" id="3_2qulp"]
+[ext_resource type="PackedScene" uid="uid://dy665nkx1go6f" path="res://scene/item/bone_collectable.tscn" id="5_k8p2n"]
+[ext_resource type="PackedScene" uid="uid://pau1076h3rh0" path="res://scene/Obj_Element/pm_collectable.tscn" id="6_j67cg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l50q7"]
 atlas = ExtResource("1_l6awx")
@@ -130,17 +134,27 @@ position = Vector2(-8, 8)
 collision_layer = 21
 collision_mask = 21
 script = ExtResource("1_e7l5t")
+speed = 30
+damageArea = 2
+itemDefult = ExtResource("2_css0d")
+itemRes = ExtResource("3_2qulp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -24)
+position = Vector2(3, -22)
 sprite_frames = SubResource("SpriteFrames_c1mpw")
-animation = &"idle"
+animation = &"walk_L"
+frame = 1
+frame_progress = 0.978253
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 5
+visibility_layer = 5
 position = Vector2(8, -8)
 shape = SubResource("CircleShape2D_5noq3")
 
 [node name="hitbox" type="Area2D" parent="."]
+light_mask = 5
+visibility_layer = 5
 collision_layer = 21
 collision_mask = 21
 
@@ -160,9 +174,20 @@ visibility_layer = 13
 position = Vector2(8, -8)
 shape = SubResource("CircleShape2D_i08mb")
 
+[node name="Pm_collectable" parent="." instance=ExtResource("6_j67cg")]
+visible = false
+position = Vector2(15, 3)
+
+[node name="bone_collectable" parent="." instance=ExtResource("5_k8p2n")]
+visible = false
+position = Vector2(1, 4)
+scale = Vector2(0.5, 0.5)
+
 [node name="Mon1_collect_area" type="Area2D" parent="."]
 light_mask = 13
 visibility_layer = 13
+collision_layer = 4
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mon1_collect_area"]
 light_mask = 13
@@ -184,3 +209,5 @@ show_percentage = false
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="body_entered" from="detection_area" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="detection_area" to="." method="_on_detection_area_body_exited"]
+[connection signal="body_entered" from="Mon1_collect_area" to="." method="_on_mon_1_collect_area_body_entered"]
+[connection signal="timeout" from="take_damage_cooldown" to="." method="_on_take_damage_cooldown_timeout"]
