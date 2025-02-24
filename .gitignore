@@ -2,5 +2,5 @@
 .godot/
 /android/
 desktop.ini
-.tmp.driveupload/
 .tmp.drivedownload/
+.tmp.driveupload/
