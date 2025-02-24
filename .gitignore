@@ -2,4 +2,8 @@
 .godot/
 /android/
 export_presets.cfg
-*.ini
+heads/desktop.ini
+heads/desktop.ini
+remotes/origin/desktop.ini
+/tags/desktop.ini
+/desktop.ini
